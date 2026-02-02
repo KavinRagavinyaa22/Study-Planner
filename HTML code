@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Study Schedule</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    input, select, button {
+      padding: 10px;
+      margin: 5px 0;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #ecf0f1;
+    }
+    .footer {
+      text-align: center;
+      padding: 10px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>My Study Planner</h1>
+  <p>Plan your daily study schedule</p>
+</header>
+
+<div class="container">
+  <h2>Add Study Schedule</h2>
+  <label>Subject</label>
+  <input type="text" id="subject" placeholder="Eg: Electrical Machines" />
+
+  <label>Day</label>
+  <select id="day">
+    <option>Monday</option>
+    <option>Tuesday</option>
+    <option>Wednesday</option>
+    <option>Thursday</option>
+    <option>Friday</option>
+    <option>Saturday</option>
+    <option>Sunday</option>
+  </select>
+
+  <label>Time</label>
+  <input type="text" id="time" placeholder="Eg: 6:00 PM - 7:00 PM" />
+
+  <button onclick="addSchedule()">Add to Schedule</button>
+
+  <h2>My Weekly Schedule</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Day</th>
+        <th>Subject</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody id="scheduleTable"></tbody>
+  </table>
+</div>
+
+<div class="footer">
+  <p>Study smart. Stay consistent.</p>
+</div>
+
+<script>
+  function addSchedule() {
+    const subject = document.getElementById('subject').value;
+    const day = document.getElementById('day').value;
+    const time = document.getElementById('time').value;
+
+    if(subject === '' || time === '') {
+      alert('Please fill all fields');
+      return;
+    }
+
+    const table = document.getElementById('scheduleTable');
+    const row = table.insertRow();
+
+    row.insertCell(0).innerText = day;
+    row.insertCell(1).innerText = subject;
+    row.insertCell(2).innerText = time;
+
+    document.getElementById('subject').value = '';
+    document.getElementById('time').value = '';
+  }
+</script>
+
+</body>
+</html>
